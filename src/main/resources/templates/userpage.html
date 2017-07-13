@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Donut</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- CSS
+================================================== -->
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'></link>
+<link rel="stylesheet" href="css/bootstrap.css"></link>
+<link rel="stylesheet" href="css/bootstrap-responsive.css"></link>
+<link rel="stylesheet" href="css/jquery.lightbox-0.5.css"></link>
+<link rel="stylesheet" href="css/custom-styles.css"></link>
+
+
+<!-- Favicons
+================================================== -->
+<link rel="shortcut icon" href="img/favicon.ico"></link>
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png"></link>
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png"></link>
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png"></link>
+
+
+<!-- JS
+================================================== -->
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.custom.js"></script>
+
+</head>
+
+<body class="home">
+	<!-- Color Bars (above header)-->
+
+
+	<div class="container">
+
+				<div class="row header">
+			<!-- Begin Header -->
+
+			<!-- Logo
+        ================================================== -->
+			<div class="span5 logo">
+				<a href="index.html"><img src="img/icon_vin_m.png" alt=""></img></a>
+				<h5 id="logo_text">DONUT</h5>
+			</div>
+
+			<!-- Main Navigation -->
+			<div class="span7 navigation">
+				<div class="navbar hidden-phone">
+					<ul class="nav">
+						<li><a href="index.htm">About <b class="caret"></b></a></li>
+						<li class="dropdown"><a class="dropdown-toggle" href="">Explore
+								<b class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/albums}">Albums</a></li>
+								<li><a href="">Artists</a></li>
+								<li><a href="">Labels</a></li>
+								<li><a href="">Events</a></li>
+								<li><a href="">Stores</a></li>
+							</ul></li>
+						<li><a href="">Contact <b class="caret"></b></a></li>
+						
+						<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Log
+								out<b class="caret"></b></a></li>
+						<li sec:authorize="isAuthenticated()" ><a
+							th:href="@{/userpage}"><span sec:authentication="name"></span><b class="caret"></b></a></li>
+						<li sec:authorize="isAnonymous()"><a th:href="@{/signin}">Sign
+								in</a></li>
+						<li sec:authorize="isAnonymous()"><a th:href="@{/login}">Log
+								in</a></li>
+					</ul>
+
+				</div>
+
+				<!-- Mobile Nav
+            ================================================== -->
+				<form action="#" id="mobile-nav" class="visible-phone">
+					<div class="mobile-nav-select">
+						<select
+							onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+							<option value="">Navigate...</option>
+							<option value="index.html">Home</option>
+							<option value="albms.html">Albums</option>
+							<option value="">Labels</option>
+							<option value="">Events</option>
+							<option value="">Stores</option>
+							<option value="">Contact</option>
+							<option value="">Sign up</option>
+							<option value="login.html">Log in</option>
+						</select>
+					</div>
+				</form>
+
+			</div>
+
+		</div>
+		<!-- End Header -->
+
+  <!-- Blog Content
+    ================================================== --> 
+    <div class="row">
+
+        <!-- Blog Posts
+        ================================================== --> 
+        <div class="span9 blog">
+
+            <div class="row clearfix">
+                <ul class="blog-post-grid">
+
+                    <!-- Blog Post 1 -->
+                    <li class="span3 blog-post-item">
+                        <div class="blog-post-hover hidden-phone hidden-tablet">
+                            <p><a href="blog-single.htm" class="clearfix">A subject that is beautiful in itself</a>
+                            posted on 9/01/15<br /> 12 comments<br /> posted in photoshop</p>
+                        </div>
+                        <a href="blog-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Post Thumb"/></a>
+                    </li>
+
+                    <!-- Blog Post 2 -->
+                    <li class="span3 blog-post-item">
+                        <div class="blog-post-hover hidden-phone hidden-tablet">
+                            <p><a href="blog-single.htm" class="clearfix">A great artist is always before his time</a>
+                            posted on 9/01/15<br /> 12 comments<br /> posted in photoshop</p>
+                        </div>
+                        <a href="blog-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Post Thumb"/></a>
+                    </li>
+
+                    <!-- Blog Post 3 -->
+                    <li class="span3 blog-post-item">
+                        <div class="blog-post-hover hidden-phone hidden-tablet">
+                            <p><a href="blog-single.htm" class="clearfix">Is art everything to anybody?</a>
+                            posted on 9/01/15<br /> 12 comments<br /> posted in photoshop</p>
+                        </div>
+                        <a href="blog-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Post Thumb"/></a>
+                    </li>
+
+                     <!-- Blog Post 4 -->
+                    <li class="span3 blog-post-item">
+                        <div class="blog-post-hover hidden-phone hidden-tablet">
+                            <p><a href="blog-single.htm" class="clearfix">A subject that is beautiful in itself</a>
+                            posted on 9/01/15<br /> 12 comments<br /> posted in photoshop</p>
+                        </div>
+                        <a href="blog-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Post Thumb"/></a>
+                    </li>
+
+                    <!-- Blog Post 5 -->
+                    <li class="span3 blog-post-item">
+                        <div class="blog-post-hover hidden-phone hidden-tablet">
+                            <p><a href="blog-single.htm" class="clearfix">A great artist is always before his time</a>
+                            posted on 9/01/15<br /> 12 comments<br /> posted in photoshop</p>
+                        </div>
+                        <a href="blog-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Post Thumb"/></a>
+                    </li>
+
+                    <!-- Blog Post 6 -->
+                    <li class="span3 blog-post-item">
+                        <div class="blog-post-hover hidden-phone hidden-tablet">
+                            <p><a href="blog-single.htm" class="clearfix">Is art everything to anybody?</a>
+                            posted on 9/01/15<br /> 12 comments<br /> posted in photoshop</p>
+                        </div>
+                        <a href="blog-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Post Thumb"/></a>
+                    </li>
+
+                     <!-- Blog Post 7 -->
+                    <li class="span3 blog-post-item">
+                        <div class="blog-post-hover hidden-phone hidden-tablet">
+                            <p><a href="blog-single.htm" class="clearfix">A subject that is beautiful in itself</a>
+                            posted on 9/01/15<br /> 12 comments<br /> posted in photoshop</p>
+                        </div>
+                       <a href="blog-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Post Thumb"/></a>
+                    </li>
+
+                    <!-- Blog Post 8 -->
+                    <li class="span3 blog-post-item">
+                        <div class="blog-post-hover hidden-phone hidden-tablet">
+                            <p><a href="blog-single.htm" class="clearfix">A great artist is always before his time</a>
+                            posted on 9/01/15<br /> 12 comments<br /> posted in photoshop</p>
+                        </div>
+                        <a href="blog-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Post Thumb"/></a>
+                    </li>
+
+                    <!-- Blog Post 9 -->
+                    <li class="span3 blog-post-item">
+                        <div class="blog-post-hover hidden-phone hidden-tablet">
+                            <p><a href="blog-single.htm" class="clearfix">Is art everything to anybody?</a>
+                            posted on 9/01/15<br /> 12 comments<br /> posted in photoshop</p>
+                        </div>
+                        <a href="blog-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Post Thumb"/></a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <ul>
+                <li class="active"><a href="#">Prev</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Blog Sidebar
+        ================================================== --> 
+        <div class="span3 sidebar">
+
+            <!--Search-->
+            <section>
+                <div class="input-append">
+                    <form action="#">
+                        <input id="appendedInputButton" size="16" type="text" placeholder="Search"></input><button class="btn" type="button"><i class="icon-search"></i></button>
+                    </form>
+                </div>
+            </section>
+
+            <!--Categories-->
+            <h5 class="title-bg">Donate history</h5>
+       
+
+            <!--Tabbed Content-->
+            <section class="visible-desktop">
+            <h5 class="title-bg">More Info</h5>
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#comments" data-toggle="tab">Comments</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="comments">
+                     <ul>
+                        <li><i class="icon-comment"></i> <a href="#">Lorem ipsum dolor sit amet</a></li>
+                        <li><i class="icon-comment"></i><a href="#">Consectetur adipiscing elit</a></li>
+                        <li><i class="icon-comment"></i> <a href="#">Ipsum dolor sit amet consectetur</a></li>
+                        <li><i class="icon-comment"></i><a href="#">Aadipiscing elit varius elementum</a></li>
+                        <li><i class="icon-comment"></i><a href="#">ulla iaculis mattis lorem</a></li>
+                    </ul>
+                </div>
+            </div>
+            </section>
+
+        </div>
+
+    </div>
+
+	</div>
+	<!-- End Container -->
+
+	<!-- Scroll to Top -->
+	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+</body>
+</html>

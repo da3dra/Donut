@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://www.thymeleaf.org"
+	>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Donut</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+<link href='http://fonts.googleapis.com/css?family=Oswald'
+	rel='stylesheet' type='text/css'/>
+<link rel="stylesheet" href="css/bootstrap.css"/>
+<link rel="stylesheet" href="css/bootstrap-responsive.css"/>
+<link rel="stylesheet" href="css/custom-styles.css"/>
+
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<!-- <script>
+$(document).ready(function () {
+	$("#login").click(function(event) {
+	var data = {}
+	data.login = $('#username').val()
+	data.pass =  $('#password').val()
+	alert(data.login);
+	alert(data.pass);
+	$.ajax({ 
+        type: "POST",
+        contentType : "application/json",
+        url: "/login",
+		data : JSON.stringify(data),
+		dataType : 'json',
+		timeout : 600000,
+		success : function(data) {
+			alert('sussc');
+		},
+		error : function(e) {
+			alert('error');
+		}
+});
+});
+});
+</script> -->
+
+</head>
+
+<body class="home">
+	<!-- Color Bars (above header)-->
+
+
+	<div class="container">
+
+		<div class="row header">
+			<!-- Begin Header -->
+
+			<!-- Logo
+        ================================================== -->
+			<div class="span5 logo">
+				<a href="index.html"><img src="img/icon_vin_m.png" alt="" /></a>
+				<h5 id="logo_text">DONUT</h5>
+			</div>
+
+			<!-- Main Navigation -->
+			<div class="span7 navigation">
+				<div class="navbar hidden-phone">
+					<ul class="nav">
+						<li><a href="index.html">About <b class="caret"></b></a></li>
+						<li class="dropdown"><a class="dropdown-toggle" href="">Explore
+								<b class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a href="">Artists</a></li>
+								<li><a href="">Labels</a></li>
+								<li><a href="">Events</a></li>
+								<li><a href="">Stores</a></li>
+							</ul></li>
+						<li><a href="">Contact <b class="caret"></b></a></li>
+						<li><a href="">sign up <b class="caret"></b></a></li>
+						<li><a href="page-contact.htm">log in</a></li>
+					</ul>
+
+				</div>
+
+				<!-- Mobile Nav
+            ================================================== -->
+				<form action="#" id="mobile-nav" class="visible-phone">
+					<div class="mobile-nav-select">
+						<select
+							onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+							<option value="">Navigate...</option>
+							<option value="index.html">Home</option>
+							<option value="albms.html">Albums</option>
+							<option value="">Labels</option>
+							<option value="">Events</option>
+							<option value="">Stores</option>
+							<option value="">Contact</option>
+							<option value="">Sign up</option>
+							<option value="login.html">Log in</option>
+						</select>
+					</div>
+				</form>
+
+			</div>
+
+		</div>
+		<!-- End Header -->
+
+
+	<!-- 	<form role="form" action="/login" method="post">
+			<div class="input-prepend">
+				<span class="add-on"><i class="icon-user"></i></span><input
+					class="span2" id="username" size="16" type="text" name="username">
+			</div>
+			<div class="input-prepend">
+				<span class="add-on"><i class="icon-lock"></i></span><input
+					class="span2" id="password" size="16" type="text" name="password">
+			</div>
+			<button id="login" class="btn btn-small btn-inverse" type="submit">Login</button>
+		</form> -->
+		
+		<h5 class="title-bg">User Login</h5>
+		<p th:if="${loginError}" class="error">Wrong user or password</p>
+		<form name="f" th:action="@{/login}" method="post">
+			<fieldset>
+				<div th:if="${param.error}" class="alert alert-error">Invalid
+					username and password.</div>
+				<div th:if="${param.logout}" class="alert alert-success">You
+					have been logged out.</div>
+
+				<div class="input-prepend">
+					<span class="add-on"><i class="icon-user"></i></span> <input
+						class="span2" type="text" id="username" name="username" />
+				</div>
+
+				<div class="input-prepend">
+					<span class="add-on"><i class="icon-lock"></i></span> <input
+						type="password" id="password" name="password" />
+				</div>
+					<button id="login" class="btn btn-small btn-inverse" type="submit">Log in</button>
+			</fieldset>
+		</form>
+		
+	</div>
+	<!-- End Container -->
+	<!-- Scroll to Top -->
+	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+</body>
+</html>

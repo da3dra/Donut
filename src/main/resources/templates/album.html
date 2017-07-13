@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Donut</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link href='http://fonts.googleapis.com/css?family=Oswald'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.css">
+<link rel="stylesheet" href="css/prettyPhoto.css" />
+<link rel="stylesheet" href="css/flexslider.css" />
+<link rel="stylesheet" href="css/custom-styles.css">
+
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<!-- <script>
+$(document).ready(function () {
+	$("#login").click(function(event) {
+	var data = {}
+	data.login = $('#username').val()
+	data.pass =  $('#password').val()
+	alert(data.login);
+	alert(data.pass);
+	$.ajax({ 
+        type: "POST",
+        contentType : "application/json",
+        url: "/login",
+		data : JSON.stringify(data),
+		dataType : 'json',
+		timeout : 600000,
+		success : function(data) {
+			alert('sussc');
+		},
+		error : function(e) {
+			alert('error');
+		}
+});
+});
+});
+</script> -->
+
+</head>
+
+<body class="home">
+	<!-- Color Bars (above header)-->
+
+
+	<div class="container">
+
+		<div class="row header">
+			<!-- Begin Header -->
+
+			<!-- Logo
+        ================================================== -->
+			<div class="span5 logo">
+				<a href="index.html"><img src="img/icon_vin_m.png" alt="" /></a>
+				<h5 id="logo_text">DONUT</h5>
+			</div>
+
+			<!-- Main Navigation -->
+			<div class="span7 navigation">
+				<div class="navbar hidden-phone">
+					<ul class="nav">
+						<li><a href="index.html">About <b class="caret"></b></a></li>
+						<li class="dropdown"><a class="dropdown-toggle" href="">Explore
+								<b class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a href="">Artists</a></li>
+								<li><a href="">Labels</a></li>
+								<li><a href="">Events</a></li>
+								<li><a href="">Stores</a></li>
+							</ul></li>
+						<li><a href="">Contact <b class="caret"></b></a></li>
+						<li><a href="">sign up <b class="caret"></b></a></li>
+						<li><a href="login.html">log in</a></li>
+					</ul>
+
+				</div>
+
+				<!-- Mobile Nav
+            ================================================== -->
+				<form action="#" id="mobile-nav" class="visible-phone">
+					<div class="mobile-nav-select">
+						<select
+							onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+							<option value="">Navigate...</option>
+							<option value="index.html">Home</option>
+							<option value="albms.html">Albums</option>
+							<option value="">Labels</option>
+							<option value="">Events</option>
+							<option value="">Stores</option>
+							<option value="">Contact</option>
+							<option value="">Sign up</option>
+							<option value="login.html">Log in</option>
+						</select>
+					</div>
+				</form>
+
+			</div>
+
+		</div>
+		<!-- End Header -->
+		<!-- Page Content
+    ================================================== -->
+		<div class="row">
+			<!--Container row-->
+
+			<!-- Page Left Sidebar
+        ================================================== -->
+			<div class="span3 sidebar page-left-sidebar">
+				<!-- Begin sidebar column -->
+
+				<!--Navigation-->
+				<h5 class="title-bg">Tracks</h5>
+				<ul class="post-category-list">
+					<li><a href="#"><i class="icon-plus-sign"></i>Track</a></li>
+					<li><a href="#"><i class="icon-plus-sign"></i>Track</a></li>
+					<li><a href="#"><i class="icon-plus-sign"></i>Track</a></li>
+					<li><a href="#"><i class="icon-plus-sign"></i>Track</a></li>
+				</ul>
+
+
+
+
+			</div>
+			<!-- End sidebar column -->
+
+			<!-- Page Content
+        ================================================== -->
+			<div class="span6">
+				<!--Begin page content column-->
+
+				<img class="album_cover" src="img/covers/14.jpg" alt="Image">
+
+				<p class="lead">Lorem ipsum dolor sit amet, consectetur
+					adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc
+					iaculis ac. Proin tristique tellus in est vulputate luctus
+					fermentum ipsum molestie.</p>
+
+			</div>
+			<!--End page content column-->
+
+			<!-- Page Right Sidebar
+        ================================================== -->
+			<div class="span3 sidebar page-right-sidebar">
+				<!-- Begin sidebar column -->
+
+				<button id="like" class="btn btn-inverse" type="button">Like</button>
+				<button id="donate" class="btn btn-inverse" type="button">Donate</button>
+				<input class="donate_in" name="donate_in" type="number" min="1" value="1">
+				<!--Available-->
+				<h5 class="title-bg">Available in</h5>
+				<ul class="popular-posts">
+					<li><a href="#"><img
+							src="img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>
+						<h6>
+							<a href="#">Store</a>
+						</h6> <em>Posted on 09/01/15</em></li>
+					<li><a href="#"><img
+							src="img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>
+						<h6>
+							<a href="#">Store</a>
+						</h6> <em>Posted on 09/01/15</em>
+					<li><a href="#"><img
+							src="img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>
+						<h6>
+							<a href="#">Store</a>
+						</h6> <em>Posted on 09/01/15</em></li>
+				</ul>
+
+				<!--Comms-->
+				<h5 class="title-bg">Comments</h5>
+
+				<p class="quote-text side">
+					"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+					interdum felis fermentum."<cite>- Client Name, Big Company</cite>
+				</p>
+
+				<p class="quote-text side">
+					"Adipiscing elit. In interdum felis fermentum ipsum molestie sed
+					porttitor ligula rutrum."<cite>- Another Client Name, Big
+						Company</cite>
+				</p>
+
+			</div>
+			<!-- End sidebar column -->
+
+		</div>
+		<!-- End container row -->
+
+	</div>
+	<!-- End Container -->
+
+	<!-- Scroll to Top -->
+	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+</body>
+</html>

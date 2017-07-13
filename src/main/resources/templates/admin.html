@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	$.ajax({ 
+        type: "GET",
+        url: "/books",
+        success: function (data) {
+            alert('success');
+            var json = "<h4>Ajax Response</h4><div>"
+                + JSON.stringify(data, null, 4) + "</div>";
+            $('#tracklist').html(json);
+        },
+        error: function (e) {
+         alert('error');
+        }
+ 
+});
+	$("#btn-save").click(function(event) {
+		var data = {}
+		data["title"] = $("#title").val();
+		data["artist"] = "artist";
+		data["trackUrl"] = "url";
+		$("#btn-save").prop("disabled", true);
+
+		$.ajax({ 
+	             type: "POST",
+	             contentType: "application/json",
+	             url: "/books",
+	             data: JSON.stringify(data),
+	             dataType: 'json',
+	             timeout: 600000,
+	             success: function (data) {
+	                 var json = "<h4>Ajax Response</h4><div>"
+	                     + JSON.stringify(data, null, 4) + "</div>";
+	                 $('#tracklist').html(json);
+	             },
+	             error: function (e) {
+	              alert('error');
+	             }
+		});
+	});
+});
+</script>
+</head>
+<body>
+
+	<form action="">
+		<p>
+			<b>Track</b>
+		</p>
+		<p>
+			<input type="text" id="title"></input>
+		<p>
+			<button type="submit" id="btn-save"></button>
+		</p>
+	</form>
+<div id="tracklist"></div>
+</body>
+</html>
