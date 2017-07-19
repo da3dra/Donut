@@ -33,6 +33,9 @@ public class Track implements Serializable {
 	private String audio;
 	
 
+	public void setId(int id) {
+		this.id = id;
+	}
 	public Track() {
 
 	}

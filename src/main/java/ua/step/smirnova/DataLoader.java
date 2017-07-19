@@ -38,7 +38,7 @@ public class DataLoader implements ApplicationRunner {
 
 	@Transactional
 	public void run(ApplicationArguments args) throws Exception {
-		Artist ar = artistService.get(4);
+/*		Artist ar = artistService.get(4);
 		System.err.println("getting artist"+ar);
 		// Artist ar2 = artistService.get(16);
 		//Genre g = genreService.get(3);
@@ -58,6 +58,6 @@ public class DataLoader implements ApplicationRunner {
 		//a.addGenre(g);
 		// a.addGenre(g2);
 		albumService.add(a);
-		System.err.println(a);
+		System.err.println(a);*/
 	}
 }

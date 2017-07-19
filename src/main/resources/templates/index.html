@@ -36,8 +36,6 @@
 </head>
 
 <body class="home">
-	<!-- Color Bars (above header)-->
-
 
 	<div class="container">
 
@@ -55,7 +53,7 @@
 			<div class="span7 navigation">
 				<div class="navbar hidden-phone">
 					<ul class="nav">
-						<li><a href="index.htm">About <b class="caret"></b></a></li>
+						<li><a href="index">About <b class="caret"></b></a></li>
 						<li class="dropdown"><a class="dropdown-toggle" href="">Explore
 								<b class="caret"></b>
 						</a>
@@ -71,8 +69,8 @@
 						<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Log
 								out<b class="caret"></b></a></li>
 						<li sec:authorize="isAuthenticated()" ><a
-							th:href="@{/userpage}"><span sec:authentication="name"></span><b class="caret"></b></a></li>
-						<li sec:authorize="isAnonymous()"><a th:href="@{/signin}">Sign
+							th:href="@{/userpage}"><span sec:authentication="principal.username"></span><b class="caret"></b></a></li>
+						<li sec:authorize="isAnonymous()"><a th:href="@{registration}">Sign
 								in</a></li>
 						<li sec:authorize="isAnonymous()"><a th:href="@{/login}">Log
 								in</a></li>

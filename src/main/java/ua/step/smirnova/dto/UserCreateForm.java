@@ -6,20 +6,21 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import ua.step.smirnova.entities.Role;
 
-
 public class UserCreateForm {
+	@NotEmpty
+	private String username = "";
 
-    @NotEmpty
-    private String email = "";
+	@NotEmpty
+	private String email = "";
 
-    @NotEmpty
-    private String password = "";
+	@NotEmpty
+	private String password = "";
 
-    @NotEmpty
-    private String passwordRepeated = "";
+	@NotEmpty
+	private String passwordRepeated = "";
 
-    @NotNull
-    private Role role = Role.USER;
+	@NotNull
+	private Role role = Role.USER;
 
 	public String getEmail() {
 		return email;
@@ -52,4 +53,13 @@ public class UserCreateForm {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 }

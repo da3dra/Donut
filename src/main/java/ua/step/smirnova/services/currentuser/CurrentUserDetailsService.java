@@ -1,4 +1,4 @@
-package ua.step.smirnova.service;
+package ua.step.smirnova.services.currentuser;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,8 +9,7 @@ import org.springframework.stereotype.Service;
 
 import ua.step.smirnova.dto.CurrentUser;
 import ua.step.smirnova.entities.User;
-
-
+import ua.step.smirnova.service.UserService;
 
 @Service
 public class CurrentUserDetailsService implements UserDetailsService {

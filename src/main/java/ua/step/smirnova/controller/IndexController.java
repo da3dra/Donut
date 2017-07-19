@@ -25,10 +25,13 @@ public class IndexController {
 	public void setTrackService(TrackServiceImpl trackService) {
 		this.trackService = trackService;
 	}*/
-
+	  @RequestMapping("/")
+	  public String main() {
+	    return "index";
+	  }
 
 	  @RequestMapping("/index")
-	  public String login() {
+	  public String index() {
 	    return "index";
 	  }
 	

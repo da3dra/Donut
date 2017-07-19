@@ -46,9 +46,15 @@ public class UserServiceImpl implements UserService {
 	public User create(UserCreateForm form) {
 		User user = new User();
 		user.setEmail(form.getEmail());
-		// шифрование пароля
 		user.setPasswordHash(new BCryptPasswordEncoder().encode(form.getPassword()));
 		user.setRole(form.getRole());
+		user.setUsername(form.getUsername());
 		return userRepository.save(user);
+	}
+
+	@Override
+	@Transactional
+	public Optional<User> getUserByUsername(String name) {
+		return userRepository.findOneByUsername(name);
 	}
 }

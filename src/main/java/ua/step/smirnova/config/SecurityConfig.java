@@ -1,6 +1,9 @@
 package ua.step.smirnova.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -19,21 +22,26 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;
 
+/*	@Value("${spring.queries.users-query}")
+	private String usersQuery;
+	
+	@Autowired
+	private DataSource dataSource;*/
+
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
-		auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
+		
 		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers("/", "albums**").permitAll().antMatchers("/admin**")
-				.hasAuthority("ADMIN").and().formLogin().loginPage("/login") .failureUrl("/login-error").defaultSuccessUrl("/index")
-				.usernameParameter("username").passwordParameter("password").permitAll()
+		http.csrf().disable().authorizeRequests().antMatchers("/").permitAll().antMatchers("/admin**")
+				.hasAuthority("ADMIN").and().formLogin().loginPage("/login").failureUrl("/login-error")
+				.defaultSuccessUrl("/index").usernameParameter("username").passwordParameter("password").permitAll()
 				.and().logout().logoutUrl("/logout").deleteCookies("remember-me").logoutSuccessUrl("/index").permitAll()
 				.and().rememberMe();
 
 	}
-	
+
 }

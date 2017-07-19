@@ -20,7 +20,7 @@ import org.hibernate.annotations.Type;
 public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false, updatable = false)
+	@Column(nullable =  false, updatable = false)
 	private int id;
 
 	@Column(nullable = false, unique = true)

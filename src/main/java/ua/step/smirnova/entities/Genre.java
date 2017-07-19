@@ -26,6 +26,10 @@ public class Genre implements Serializable {
 	private String title;
 
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getTitle() {
 		return title;
 	}
