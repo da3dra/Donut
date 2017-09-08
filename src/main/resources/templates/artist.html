@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Donut</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href='http://fonts.googleapis.com/css?family=Oswald'
+	rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" href="css/bootstrap-responsive.css" />
+<link rel="stylesheet" href="css/custom-styles.css" />
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/artistPage.js"></script>
+<!-- <script>
+$(document).ready(function () {
+	$.ajax({ 
+	    type: "GET",
+	    url: "artist?id="+1,
+	    success: function (data) {
+	    	alert(JSON.stringify(data));
+	    },
+	    error: function (e) {
+	     alert('get artist err');
+   		}
+	});
+});
+</script> -->
+</head>
+
+<body class="home">
+
+	<div class="container">
+
+		<div class="row header">
+			<!-- Begin Header -->
+
+			<!-- Logo
+        ================================================== -->
+			<div class="span5 logo">
+				<a href="index.html"><img src="img/icon_vin_m.png" alt="" /></a>
+				<h5 id="logo_text">DONUT</h5>
+			</div>
+
+	<!-- Main Navigation -->
+			<div class="span7 navigation">
+				<div class="navbar hidden-phone">
+					<ul class="nav">
+						<li><a href="index">About <b class="caret"></b></a></li>
+						<li class="dropdown"><a class="dropdown-toggle" href="">Explore
+								<b class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/albums}">Albums</a></li>
+								<li><a href="">Artists</a></li>
+								<li><a href="">Labels</a></li>
+								<li><a href="">Events</a></li>
+								<li><a href="">Stores</a></li>
+							</ul></li>
+						<li><a href="">Contact <b class="caret"></b></a></li>
+						<li class="dropdown" sec:authorize="isAuthenticated()"><a class="dropdown-toggle" th:href="@{/user}">
+						     <span sec:authentication="principal.name"></span><b class="caret"></b></a>
+						     	<ul class="dropdown-menu" >
+						     		<li><a th:href="@{user(id=${#authentication.principal.id})}">Feed</a></li>
+									<li><a href="">Wishlist</a></li>
+									<li><a href="">Bag</a></li>
+									<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Log out<b class="caret"></b></a></li>
+						     	</ul>
+						</li>
+						<li sec:authorize="isAnonymous()"><a
+							th:href="@{registration}">Sign in</a></li>
+						<li sec:authorize="isAnonymous()"><a th:href="@{/login}">Log in</a></li>
+					</ul>
+
+				</div>
+
+
+				<!-- Mobile Nav
+            ================================================== -->
+				<form action="#" id="mobile-nav" class="visible-phone">
+					<div class="mobile-nav-select">
+						<select
+							onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+							<option value="">Navigate...</option>
+							<option value="index.html">Home</option>
+							<option value="albms.html">Albums</option>
+							<option value="">Labels</option>
+							<option value="">Events</option>
+							<option value="">Stores</option>
+							<option value="">Contact</option>
+							<option value="">Sign up</option>
+							<option value="login.html">Log in</option>
+						</select>
+					</div>
+				</form>
+
+			</div>
+
+		</div>
+	
+    <!-- Page Content
+    ================================================== --> 
+    <div class="row"><!--Container row-->
+
+    <!-- Title Header -->
+        <div class="span8"><!--Begin page content column-->
+
+       <h2 id="artist_name"></h2>
+       
+         <div class="clearfix">
+           <img src="img/gallery/gallery-img-1-4col.jpg" class="thumbnail align-left" alt="Image" />
+             <div th:with="currentUrl=(${#httpServletRequest.requestURI + '?' + #strings.defaultString(#httpServletRequest.queryString, '')})"></div>
+                <p>Vivamus augue nulla, vestibulum ac ultrices posuere, vehicula ac arcu. Quisque nisi lacus, bibendum quis commodo eget, lobortis eget elit. Cras venenatis mauris eu tortor consequat a convallis nulla molestie. Phasellus malesuada malesuada velit et fermentum. Proin ut leo nec mauris pulvinar volutpat. Sed ac neque nec leo condimentum rhoncus.</p>
+            
+            <form th:with="currentUrl=(${#httpServletRequest.requestURI + '?' + #strings.defaultString(#httpServletRequest.queryString, '')})" sec:authorize="isAuthenticated()" method="POST" th:action="@{${currentUrl}(follower=${#authentication.principal.id})}">
+  				  <input class="btn btn-small btn-inverse" value="Follow" type="submit" style="cursor:pointer"/>
+  				  <div th:if="${followMessage}">
+    					<h4 th:text="${followMessage}"></h4>
+				  </div>
+			</form>
+				
+		    <form th:with="currentUrl=(${#httpServletRequest.requestURI + '?' + #strings.defaultString(#httpServletRequest.queryString, '')})" sec:authorize="isAuthenticated()" method="POST" th:action="@{${currentUrl}(donater=${#authentication.principal.id})}">
+	             <button id="donate" class="btn btn-inverse" type="submit">Donate</button>
+				     <input name="donuts" type="number" min="1" value="1"/>  				
+				          <div th:if="${donateMessage}">
+    					  	<h4 th:text="${donateMessage}"></h4>
+				          </div>
+			</form>
+					
+            </div>
+            
+            <h5 class="title-bg">Albums</h5>
+
+            <div class="row" id="artist_albums">
+           
+            </div>
+
+        </div> <!--End page content column-->
+
+        <!-- Blog Sidebar
+        ================================================== --> 
+        <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
+        </div><!-- End sidebar column -->
+
+	</div>
+	</div>
+	<!-- End Container -->
+	<!-- Scroll to Top -->
+	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+</body>
+</html>

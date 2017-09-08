@@ -1,45 +1,38 @@
 package ua.step.smirnova.entities;
 
-import java.io.Serializable;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.Type;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "artists")
-public class Artist implements Serializable {
+public class Artist extends User {
 
-	private static final long serialVersionUID = 1L;
-
-	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false, updatable = false)
 	private int id;
-	
+
 	@Column(nullable = false, unique = true)
-	@Type(type = "text")
 	private String username;
 
 	@Column(nullable = false, unique = true)
-	@Type(type = "text")
 	private String email;
 
 	@Column(name = "password_hash", nullable = false)
+	@JsonIgnore
 	private String passwordHash;
 
 	@Column(name = "role", nullable = false)
@@ -47,21 +40,28 @@ public class Artist implements Serializable {
 	private Role role;
 	
 	@Column
-	@Type(type = "text")
+	private Status status;
+	
+	@Column
 	private String name;
 
 	@Column
-	@ElementCollection
-	@ManyToMany(cascade = CascadeType.REMOVE)
+	private Integer donuts = 0;
+
+	@ManyToMany(targetEntity = Album.class, cascade = CascadeType.ALL)
 	@JoinTable(name = "ARTISTS_ALBUMS", joinColumns = @JoinColumn(name = "ARTIST_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ALBUM_ID", referencedColumnName = "ID"))
-	private Set<Album> albums = new HashSet<>();
+	@JsonBackReference
+	private Set<Album> albums;
+
+	@ManyToMany(mappedBy = "following")
+	@JsonBackReference
+	private Set<User> followers;
 
 	@Column
 	@Type(type = "text")
 	private String bio;
 
 	public Artist() {
-		System.err.println("creating artist");
 	}
 
 	public String getName() {
@@ -94,7 +94,6 @@ public class Artist implements Serializable {
 
 	public void addAlbum(Album a) {
 		albums.add(a);
-
 	}
 
 	public String getUsername() {
@@ -132,6 +131,34 @@ public class Artist implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
+	public Set<User> getFollowers() {
+		return followers;
+	}
+
+	public void setFollowers(Set<User> followers) {
+		this.followers = followers;
+	}
+
+	@Override
+	public String toString() {
+		return "Artist [username=" + username + ", email=" + email + "]";
+	}
+
+	public Integer getDonuts() {
+		return donuts;
+	}
+
+	public void setDonuts(Integer donuts) {
+		this.donuts = donuts;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 }

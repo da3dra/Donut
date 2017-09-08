@@ -30,7 +30,7 @@
 <script src="js/jquery.prettyPhoto.js"></script>
 <script src="js/jquery.flexslider.js"></script>
 <script src="js/jquery.custom.js"></script>
-<script src="js/albumLoader.js"></script>
+<script src="js/indexPage.js"></script>
 <script src="js/indexCarousel.js"></script>
 
 </head>
@@ -48,7 +48,12 @@
 				<a href="index.html"><img src="img/icon_vin_m.png" alt=""></img></a>
 				<h5 id="logo_text">DONUT</h5>
 			</div>
-
+			<div class="span4" id="search_div">
+					<div class="input-prepend">
+						<button id="search_btn" class="btn">Search</button>
+						<input type="text"  id="search" name="search"/>
+					</div>
+			</div>
 			<!-- Main Navigation -->
 			<div class="span7 navigation">
 				<div class="navbar hidden-phone">
@@ -65,15 +70,21 @@
 								<li><a href="">Stores</a></li>
 							</ul></li>
 						<li><a href="">Contact <b class="caret"></b></a></li>
-						
-						<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Log
-								out<b class="caret"></b></a></li>
-						<li sec:authorize="isAuthenticated()" ><a
-							th:href="@{/userpage}"><span sec:authentication="principal.username"></span><b class="caret"></b></a></li>
-						<li sec:authorize="isAnonymous()"><a th:href="@{registration}">Sign
-								in</a></li>
-						<li sec:authorize="isAnonymous()"><a th:href="@{/login}">Log
-								in</a></li>
+
+						<li class="dropdown" sec:authorize="isAuthenticated()"><a class="dropdown-toggle" th:href="@{/user}">
+						     <span sec:authentication="principal.name"></span><b class="caret"></b></a>
+						     	<ul class="dropdown-menu">
+						     		<li><a th:href="@{user(id=${#authentication.principal.id})}">Feed</a></li>
+									<li><a th:href="@{bag(user=${#authentication.principal.id})}">Bag</a></li>
+									<li><a th:href="@{wishlist(user=${#authentication.principal.id})}">Wishlist</a></li>
+									<li><a th:href="@{buyDonuts(id=${#authentication.principal.id})}">Buy donuts</a></li>
+									<li><a th:href="@{likes(id=${#authentication.principal.id})}">Likes</a></li>
+									<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Log out<b class="caret"></b></a></li>
+						     	</ul>
+						</li>
+						<li sec:authorize="isAnonymous()"><a
+							th:href="@{registration}">Sign in</a></li>
+						<li sec:authorize="isAnonymous()"><a th:href="@{/login}">Log in</a></li>
 					</ul>
 
 				</div>
@@ -113,6 +124,7 @@
 						<li><img src="img/n.jpg" alt="slider"></img></li>
 						<li><img src="img/b.jpg" alt="slider"></img></li>
 						<li><img src="img/bc.jpg" alt="slider"></img></li>
+						<li><img src="img/mb.jpg" alt="slider"></img></li>
 					</ul>
 				</div>
 			</div>
@@ -121,14 +133,12 @@
         ================================================== -->
 			<div class="span4">
 				<h3>
-					Welcome to Donut. <br /> Small contributions make vast freedom!
+					Welcome to Donut. <br /> Small contributions make vast changes!
 				</h3>
-				<p class="lead">Lorem ipsum dolor sit amet, consectetur
-					adipiscing elit. Aliquam pretium vulputate magna sit amet blandit.</p>
-				<p>Cras rutrum, massa non blandit convallis, est lacus gravida
-					enim, eu fermentum ligula orci et tortor. In sit amet nisl ac leo
-					pulvinar molestie. Morbi blandit ultricies ultrices.</p>
-				<a href="#"><i class="icon-plus-sign"></i>Read More</a>
+				<p class="lead" id="lead1">Ever thought how to make the world a better place?</p>
+				<p class="lead">How to fight capitalism and it's demands and let everyone do whatever they want?</p>
+			<p class="lead">	Well, there's an idea... Let's do it TOGETHER!</p>
+			
 			</div>
 
 		</div>
@@ -147,7 +157,6 @@
         ================================================== -->
 			<div class="row clearfix no-margin">
 				<ul id="new_albums" class="gallery-post-grid holder">
-
 				</ul>
 			</div>
 
@@ -164,8 +173,7 @@
 						class="gallery-hover-4col hidden-phone hidden-tablet"> </span> <a
 						href="gallery-single.htm"><img
 							src="img/gallery/gallery-img-1-4col.jpg" alt="Gallery"></img></a> <span
-						class="project-details"><a href="gallery-single.htm">Icon
-								Design</a>Classic retro style illustration.</span></li>
+						class="project-details"><a href="gallery-single.htm">Something</a>Something</span></li>
 
 					<!-- Gallery Item 6 -->
 					<li class="span3 gallery-item" data-id="id-6"
@@ -173,16 +181,14 @@
 						class="gallery-hover-4col hidden-phone hidden-tablet"> </span> <a
 						href="gallery-single.htm"><img
 							src="img/gallery/gallery-img-1-4col.jpg" alt="Gallery"></img></a> <span
-						class="project-details"><a href="gallery-single.htm">Animation
-								Cell</a>Creative storyboard illustration</span></li>
+						class="project-details"><a href="gallery-single.htm">Something</a>Something</span></li>
 
 					<!-- Gallery Item 7 -->
 					<li class="span3 gallery-item" data-id="id-7" data-type="design">
 						<span class="gallery-hover-4col hidden-phone hidden-tablet">
 					</span> <a href="gallery-single.htm"><img
 							src="img/gallery/gallery-img-1-4col.jpg" alt="Gallery"></img></a> <span
-						class="project-details"><a href="gallery-single.htm">Poster
-								Ad Campaign</a>Regional ad for a local company.</span>
+						class="project-details"><a href="gallery-single.htm">Something</a>Something</span>
 					</li>
 
 					<!-- Gallery Item 8 -->
@@ -190,8 +196,7 @@
 						<span class="gallery-hover-4col hidden-phone hidden-tablet">
 					</span> <a href="gallery-single.htm"><img
 							src="img/gallery/gallery-img-1-4col.jpg" alt="Gallery"></img></a> <span
-						class="project-details"><a href="gallery-single.htm">Magazine
-								Ad</a>For an international add campaign.</span>
+						class="project-details"><a href="gallery-single.htm">Something</a>Something</span>
 					</li>
 				</ul>
 			</div>
@@ -208,8 +213,7 @@
 						<span class="gallery-hover-4col hidden-phone hidden-tablet">
 					</span> <a href="gallery-single.htm"><img
 							src="img/gallery/gallery-img-1-4col.jpg" alt="Gallery"></img></a> <span
-						class="project-details"><a href="gallery-single.htm">Character
-								Designs</a>For a feature film.</span>
+						class="project-details"><a href="gallery-single.htm">Something</a>Something</span>
 					</li>
 
 					<!-- Gallery Item 10 -->
@@ -218,8 +222,7 @@
 						class="gallery-hover-4col hidden-phone hidden-tablet"> </span> <a
 						href="gallery-single.htm"><img
 							src="img/gallery/gallery-img-1-4col.jpg" alt="Gallery"></img></a> <span
-						class="project-details"><a href="gallery-single.htm">Poster
-								and Ad Design</a>For an international add campaign.</span></li>
+						class="project-details"><a href="gallery-single.htm">Something</a>Something</span></li>
 
 					<!-- Gallery Item 11 -->
 					<li class="span3 gallery-item" data-id="id-11"
@@ -227,8 +230,7 @@
 						class="gallery-hover-4col hidden-phone hidden-tablet"> </span> <a
 						href="gallery-single.htm"><img
 							src="img/gallery/gallery-img-1-4col.jpg" alt="Gallery"></img></a> <span
-						class="project-details"><a href="gallery-single.htm">Website
-								and Animation</a>For a local business.</span></li>
+						class="project-details"><a href="gallery-single.htm">Something</a>Something</span></li>
 
 					<!-- Gallery Item 12 -->
 					<li class="span3 gallery-item" data-id="id-12"
@@ -236,8 +238,7 @@
 						class="gallery-hover-4col hidden-phone hidden-tablet"> </span> <a
 						href="gallery-single.htm"><img
 							src="img/gallery/gallery-img-1-4col.jpg" alt="Gallery"></img></a> <span
-						class="project-details"><a href="gallery-single.htm">Branding
-								Design</a>For an international add campaign.</span></li>
+						class="project-details"><a href="gallery-single.htm">Something</a>Something</span></li>
 				</ul>
 			</div>
 		</div>

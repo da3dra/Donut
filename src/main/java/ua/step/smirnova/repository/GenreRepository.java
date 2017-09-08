@@ -7,4 +7,6 @@ import ua.step.smirnova.entities.Track;
 
 public interface GenreRepository  extends JpaRepository<Genre, Integer>{
 
+	Genre findByTitle(String title);
+
 }

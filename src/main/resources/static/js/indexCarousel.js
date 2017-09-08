@@ -17,9 +17,10 @@ $(document).ready(function () {
 });
 
  $(window).load(function(){
-
     $('.flexslider').flexslider({
-        animation: "slide",
+        animation: "fade",
+        slideshowSpeed: 200,
+        animationSpeed: 5600, 
         slideshow: true,
         start: function(slider){
           $('body').removeClass('loading');

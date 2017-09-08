@@ -1,28 +1,33 @@
 package ua.step.smirnova.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 import org.hibernate.annotations.Type;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "albums")
 public class Album implements Serializable {
 
-	// переделать на лонг!
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false, updatable = false)
@@ -32,23 +37,36 @@ public class Album implements Serializable {
 	@Type(type = "text")
 	private String title;
 
-	@Column
-	@ElementCollection
-	@ManyToMany(mappedBy = "albums",cascade = CascadeType.REMOVE)
-	private Set<Artist> artists = new HashSet<>();
+	@ManyToMany(mappedBy = "albums")
+	private Set<Artist> artists;
 
-	@Column(name = "tracks")
-	@ElementCollection
-	// почему не стоит использ-ть эту аннотацию с кастомными классами ???
-	private Set<Track> tracks = new HashSet<>();
+	@ManyToMany
+	private Set<Track> tracks;
+
+	@ManyToMany
+	@JoinTable(name = "ALBUMS_GENRES", joinColumns = @JoinColumn(name = "ALBUM_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "GENRE_ID", referencedColumnName = "ID"))
+	private Set<Genre> genres;
+	
+	@ManyToMany
+	@JoinTable(name = "ALBUMS_STORES", joinColumns = @JoinColumn(name = "ALBUM_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "STORE_ID", referencedColumnName = "ID"))
+	private Set<Store> stores;
 
 	@Column
-	@ElementCollection
-	@OneToMany
-	private Set<Genre> genres = new HashSet<>();
-
+	private Double price;
+	
 	@Column
+	private AlbumStatus status;
+	
+	@Column
+	@Type(type = "text")
 	private String cover;
+
+	@Column
+	private String tags;
+	
+	@Column
+	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
+	private Date date;
 
 	public String getTitle() {
 		return title;
@@ -56,7 +74,7 @@ public class Album implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
+	} 
 
 	public void setTitle(String title) {
 		this.title = title;
@@ -94,6 +112,10 @@ public class Album implements Serializable {
 		return id;
 	}
 
+	public void addGenre(Genre g) {
+		genres.add(g);
+	}
+
 	public String getCover() {
 		return cover;
 	}
@@ -102,8 +124,52 @@ public class Album implements Serializable {
 		this.cover = cover;
 	}
 
-	public void addGenre(Genre g) {
-		genres.add(g);
+	public String getTags() {
+		return tags;
 	}
 
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Set<Store> getStores() {
+		return stores;
+	}
+
+	public void setStores(Set<Store> stores) {
+		this.stores = stores;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public AlbumStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(AlbumStatus status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Album [id=" + id + ", title=" + title + ", artists=" + artists + ", tracks=" + tracks + ", genres="
+				+ genres + ", tags=" + tags + "]";
+	}
+	public enum AlbumStatus{
+		UNCHECKED, APPROVED, BANNED
+	}
 }

@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css?family=Amarante');
+.hidden_id{
+	visibility:hidden;
+	display:none;
+	border: 1px solid red;
+}
+.preview{
+	max-width:120px;
+	max-height:120px;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+	b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+	output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	outline: none;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+	background-color: #000000;
+	background-image:
+		url("https://www.transparenttextures.com/patterns/binding-dark.png");
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 62.5%;
+	line-height: 1;
+	color: #8080ff;
+	padding: 22px 10px;
+	padding-bottom: 55px;
+}
+
+::selection {
+	background: #3333ff;
+	color: #fff;
+}
+
+::-moz-selection {
+	background: #3333ff;
+	color: #fff;
+}
+
+::-webkit-selection {
+	background: #3333ff;
+	color: #fff;
+}
+
+br {
+	display: block;
+	line-height: 1.6em;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup,
+	menu, nav, section {
+	display: block;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+input, textarea {
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	outline: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+strong, b {
+	font-weight: bold;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+img {
+	border: 0;
+	max-width: 100%;
+}
+
+h1 {
+	font-family: 'Amarante', Tahoma, sans-serif;
+	font-weight: bold;
+	font-size: 3.6em;
+	line-height: 1.7em;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+/** page structure **/
+#wrapper {
+	position: absolute;
+	top: 30px;
+	left: 50%;
+	margin-left: -430px;
+	width: 860px;
+	background: #1f1f2e;
+	padding: 10px 17px;
+	-moz-border-radius: 5px; -webkit-border-radius : 5px;
+	width: 860px;
+	-webkit-border-radius: 5px;
+}
+#wrapper_admin {
+	position: absolute;
+	top: 30px;
+	left: 50%;
+	margin-left: -600px;
+	width:1200px;
+	background: #1f1f2e;
+	padding: 10px 17px;
+}
+#save_changes, #add_album{
+	float: right;
+	margin-right:30px;
+}
+
+#keywords {
+	margin: 0 auto;
+	font-size: 1.2em;
+	margin-bottom: 15px;
+	
+}
+
+#keywords thead {
+	max-width:1200px;
+	cursor: pointer;
+	background: #262626;
+}
+
+#keywords thead tr th {
+	font-weight: bold;
+	padding: 12px 30px;
+	padding-left: 42px;
+}
+
+#keywords thead tr th span {
+	padding-right: 20px;
+	background-repeat: no-repeat;
+	background-position: 100% 100%;
+}
+
+#keywords thead tr th.headerSortUp, #keywords thead tr th.headerSortDown
+	{
+	background: #1f1f2e;
+}
+
+#keywords thead tr th.headerSortUp span {
+	background-image: url('https://i.imgur.com/SP99ZPJ.png');
+}
+
+#keywords thead tr th.headerSortDown span {
+	background-image: url('https://i.imgur.com/RkA9MBo.png');
+}
+
+#keywords tbody tr {
+	max-width: 1200px;
+	color: #ccccff;
+}
+
+#keywords tbody tr td {
+	text-align: center;
+	padding: 15px 10px;
+}
+
+#keywords tbody tr td.author {
+	text-align: left;
+}
+
+.box {
+	display: inline-block;
+	width: 300px;
+	margin: 10px auto;
+	background: #1f1f2e;
+	padding: 4px;
+	font-family: Georgia, Helvetica, sans-serif;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+#order_form{
+position: absolute;
+top: 20px;
+right: 14px;
+width: 300px;
+font-size:130%;
+}
+form{
+	padding:10px;
+}
+.order_item{
+height:40px;
+}
+input{
+	float: right;
+}
+label{
+	line-height:27px;
+}
+.amount{
+	float:right;
+	width: 50px;
+}
+h3 {
+	padding: 5px;
+	background: #262626;
+	color: #8080ff;;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+h3 span {
+	float: right;
+	cursor: pointer;
+}
+
+h3 span:hover {
+	text-shadow: 0px 0px 3px #a1eeff;
+}
+
+ul {
+	padding: 5px;
+	overflow: hidden;
+	margin: 0;
+}
+
+ul li {
+	font-size: 13px;
+	cursor: pointer;
+	list-style-type: square;
+	list-style-position: inside;
+	color: #a1a1a1;
+	padding: 5px;
+}
+
+ul li.menu:hover {
+	text-shadow: 0px 0px 3px #a1eeff;
+}
+#add_book{
+	border: 2px solid white;
+	margin-bottom:30px;
+}
+#admin_link{
+	position: absolute;
+	right: 10px;
+	top:10px;
+	font-size: 140%;
+}

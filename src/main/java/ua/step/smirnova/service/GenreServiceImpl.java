@@ -10,7 +10,7 @@ import ua.step.smirnova.entities.Genre;
 import ua.step.smirnova.repository.GenreRepository;
 
 @Service
-public class GenreServiceImpl implements GenericService<Genre, Integer> {
+public class GenreServiceImpl implements GenreService{
 	@Autowired 
 	GenreRepository genreRepository;
 	
@@ -42,6 +42,11 @@ public class GenreServiceImpl implements GenericService<Genre, Integer> {
 	@Transactional
 	public Genre get(Integer id) {
 		return genreRepository.findOne(id);
+	}
+
+	@Override
+	public Genre getByTitle(String title) {
+		return genreRepository.findByTitle(title);
 	}
 
 }

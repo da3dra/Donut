@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Donut</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+<link href='http://fonts.googleapis.com/css?family=Oswald'
+	rel='stylesheet' type='text/css'/>
+<link rel="stylesheet" href="css/bootstrap.css"/>
+<link rel="stylesheet" href="css/bootstrap-responsive.css"/>
+<link rel="stylesheet" href="css/custom-styles.css"/>
+
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/genreLoader.js"></script>
+<script src="js/search.js"></script>
+
+</head>
+
+<body class="home">
+	<!-- Color Bars (above header)-->
+
+	<div class="container">
+
+			<div class="row header">
+			<!-- Begin Header -->
+
+			<!-- Logo
+        ================================================== -->
+			<div class="span5 logo">
+				<a href="index.html"><img src="img/icon_vin_m.png" alt=""></img></a>
+				<h5 id="logo_text">DONUT</h5>
+			</div>
+
+			<!-- Main Navigation -->
+			<div class="span7 navigation">
+				<div class="navbar hidden-phone">
+					<ul class="nav">
+						<li><a href="index.htm">About <b class="caret"></b></a></li>
+						<li class="dropdown"><a class="dropdown-toggle" href="">Explore
+								<b class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/albums}">Albums</a></li>
+								<li><a href="">Artists</a></li>
+								<li><a href="">Labels</a></li>
+								<li><a href="">Events</a></li>
+								<li><a href="">Stores</a></li>
+							</ul></li>
+						<li><a href="">Contact <b class="caret"></b></a></li>
+						
+						<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Log
+								out<b class="caret"></b></a></li>
+						<li sec:authorize="isAuthenticated()" ><a
+							th:href="@{/userpage}"><span sec:authentication="principal.username"></span><b class="caret"></b></a></li>
+						<li sec:authorize="isAnonymous()"><a th:href="@{/signin}">Sign
+								in</a></li>
+						<li sec:authorize="isAnonymous()"><a th:href="@{/login}">Log
+								in</a></li>
+					</ul>
+
+				</div>
+
+				<!-- Mobile Nav
+            ================================================== -->
+				<form action="#" id="mobile-nav" class="visible-phone">
+					<div class="mobile-nav-select">
+						<select
+							onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+							<option value="">Navigate...</option>
+							<option value="index.html">Home</option>
+							<option value="albms.html">Albums</option>
+							<option value="">Labels</option>
+							<option value="">Events</option>
+							<option value="">Stores</option>
+							<option value="">Contact</option>
+							<option value="">Sign up</option>
+							<option value="login.html">Log in</option>
+						</select>
+					</div>
+				</form>
+
+			</div>
+
+		</div>
+		<!-- End Header -->
+
+	  <!-- Page Content
+    ================================================== --> 
+
+<div >
+			<!-- Begin Gallery Row -->
+
+			<div class="span12">
+				<h5 class="title-bg">Found in albums</h5>
+			</div>
+			<!-- Gallery Thumbnails
+        ================================================== -->
+			<div class="row clearfix no-margin">
+				<ul id="albums_results" class="gallery-post-grid holder">
+				</ul>
+			</div>
+
+
+			<div class="span12">
+				<h5 class="title-bg">Found in artists</h5>
+			</div>
+			<!-- Gallery Thumbnails -->
+			<div class="row clearfix no-margin">
+				<ul class="gallery-post-grid holder" id="artists_results">
+		
+				</ul>
+			</div>
+
+			<div class="span12">
+				<h5 class="title-bg">Found in genres</h5>
+			</div>
+			<!-- Gallery Thumbnails-->
+			<div class="row clearfix no-margin">
+				<ul class="gallery-post-grid holder" id="genres_results">
+					
+				</ul>
+			</div>
+		</div>
+		<!-- End Gallery Row -->
+            <!-- Pagination -->
+            <div class="pagination">
+                <ul>
+                <li class="active"><a href="#">Prev</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+
+
+    </div><!-- End container row -->
+
+	<!-- End Container -->
+
+	<!-- Scroll to Top -->
+	<div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+</body>
+</html>

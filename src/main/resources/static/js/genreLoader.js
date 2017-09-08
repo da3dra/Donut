@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$.ajax({ 
+/*	$.ajax({ 
         type: "GET",
         url: "/albums/1",
         success: function (data) {
@@ -16,7 +16,7 @@ $(document).ready(function () {
         error: function (e) {
          alert('error');
         }
-});
+});*/
 	$.ajax({ 
         type: "GET",
         url: "/genres",

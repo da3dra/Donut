@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:tiles="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="../css/style.css"/>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="../js/artistManage.js"></script>
+
+</head>
+
+<body>
+
+	<div id="wrapper_admin">
+		<h1>Add album</h1>
+	<form id="form" method="POST" enctype="multipart/form-data">
+		<table id="keywords">
+		<tbody id="add_album">
+			<tr>
+			    <td sec:authorize="isAuthenticated()"  id="user_id" sec:authentication="principal.id"></td>
+			    <td sec:authorize="isAuthenticated()"  class = "hidden_id" id="album_id">0</td>
+				<td id="new_title"><input name="title" id="title_in" required="required" type="text" value="title"/>Title</td>
+				<td id="new_genre"><input name="genres" id="genres_in" type="text" value="genre"/>Genres</td>
+				<td id="new_tags"><input name="tags" id="tags_in" type="text" value="tags"/>Tags</td>	
+				<td id="new_cover"><input  name="cover" id="cover" type="file" />Cover</td> 
+				<td id="new_tracks"><input  name="tracks" id="tracks" type="file" multiple="multiple"></input>Tracks</td> 
+				<td><button sec:authorize="isAuthenticated()" id="save_btn" th:onclick="${'javascript:saveAlbum()'}">Save</button></td>
+		</tr>
+			</tbody>
+		</table>
+	</form>
+			
+		<table id="keywords">
+			<thead>
+				<tr>
+					<th><span>Title</span></th>
+					<th><span>Genre</span></th>
+					<th><span>Tags</span></th>
+					<th><span>Status</span></th>
+					<th><span>Cover</span></th>
+					<th><span>Tracks</span></th>
+				</tr>
+			</thead>
+
+			<tbody id="albumlist">
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

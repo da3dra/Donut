@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 import ua.step.smirnova.dto.UserCreateForm;
+import ua.step.smirnova.entities.Artist;
 import ua.step.smirnova.entities.User;
 
 public interface UserService {
@@ -16,4 +17,10 @@ public interface UserService {
 	Collection<User> getAllUsers();
 
 	User create(UserCreateForm form);
+	
+	void update(User user);
+
+	void follow(User user, Artist artist);
+
+	boolean donate(User user, Artist artist, int toGive);
 }
